@@ -1,2 +1,2 @@
-# searchingDistributedFileSystem
+# sDFS
 using Java RMI and JMS

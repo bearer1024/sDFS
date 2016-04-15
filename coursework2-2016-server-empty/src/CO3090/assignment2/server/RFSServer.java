@@ -7,6 +7,8 @@ import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.rmi.*;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.rmi.server.*;
 import java.util.HashMap;
 import java.util.Vector;
@@ -27,10 +29,20 @@ public class RFSServer extends UnicastRemoteObject implements RFSInterface
     	}
     	String name = "rmi://localhost/FileSearch";
     	try {
+			RFSServer rfsServer = new RFSServer();
+			RFSInterface rfsInterface = (RFSInterface) UnicastRemoteObject.exportObject(rfsServer);
+			Registry registry = LocateRegistry.getRegistry(name);
+			registry.rebind(name,rfsInterface);
+			System.err.println("Server ready");
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			System.err.println("Server exception:"+e1.toString());
+			e1.printStackTrace();
+		}
+    	try {
     	    RFSInterface engine = new RFSServer();
     	    
     	    /*complete this method*/
-    	    
     	    Naming.rebind(name, engine);
     	    System.out.println("FileSearch Service bound");  
     	} catch (Exception e) {

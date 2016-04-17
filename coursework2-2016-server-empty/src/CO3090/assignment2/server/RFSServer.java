@@ -28,20 +28,19 @@ public class RFSServer extends UnicastRemoteObject implements RFSInterface
     	    System.setSecurityManager(new RMISecurityManager());
     	}
     	String name = "rmi://localhost/FileSearch";
-    	try {
+    /*	try {
 			RFSServer rfsServer = new RFSServer();
 			RFSInterface rfsInterface = (RFSInterface) UnicastRemoteObject.exportObject(rfsServer);
 			Registry registry = LocateRegistry.getRegistry(name);
 			registry.rebind(name,rfsInterface);
 			System.err.println("Server ready");
 		} catch (RemoteException e1) {
-			// TODO Auto-generated catch block
 			System.err.println("Server exception:"+e1.toString());
 			e1.printStackTrace();
-		}
+		}*/
     	try {
     	    RFSInterface engine = new RFSServer();
-    	    
+    	    Registry registry = LocateRegistry.getRegistry(name);
     	    /*complete this method*/
     	    Naming.rebind(name, engine);
     	    System.out.println("FileSearch Service bound");  
@@ -57,7 +56,7 @@ public class RFSServer extends UnicastRemoteObject implements RFSInterface
 
     //Question (2.3)
 	@Override
-	public Object executeQuery(/*some arguments, refer to RFSInterface.java*/) throws RemoteException {
+	public Object executeQuery(String query) throws RemoteException {
 		/*complete this method*/
 		return null;
 	}

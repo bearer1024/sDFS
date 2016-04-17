@@ -58,7 +58,10 @@ public class RFSServer extends UnicastRemoteObject implements RFSInterface
 	@Override
 	public Object executeQuery(SearchCriteria query) throws RemoteException {
 		/*complete this method*/
-		return null;
+		Vector<HashMap<String,String>> vector = new Vector<HashMap<String,String>>();
+		//return query.execute(new Vector<HashMap>());
+		return query.execute(new Vector<HashMap>());
+
 	}
 
     

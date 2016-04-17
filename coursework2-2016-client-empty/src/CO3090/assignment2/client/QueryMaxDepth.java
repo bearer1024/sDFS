@@ -29,7 +29,7 @@ public class QueryMaxDepth implements SearchCriteria{
 
 	@Override
 	public Object /*change to your own type*/ 
-			execute(Object /*change to your own arguments*/ obj) {
+			execute(Vector<HashMap> vector) {
 		
 			return null;
 	}

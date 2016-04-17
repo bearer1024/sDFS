@@ -56,7 +56,7 @@ public class RFSServer extends UnicastRemoteObject implements RFSInterface
 
     //Question (2.3)
 	@Override
-	public Object executeQuery(String query) throws RemoteException {
+	public Object executeQuery(SearchCriteria query) throws RemoteException {
 		/*complete this method*/
 		return null;
 	}
